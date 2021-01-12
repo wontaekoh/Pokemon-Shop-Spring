@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&family=Raleway&family=Rubik&display=swap");
+
+/* buttons outline */
+button,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* search box outline */
+input[type="textbox"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* sticky header */
+#header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  background-color: #273544;
+}
+
+/* main grid */
+.searched-products {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+}
+
+/* Image transform */
+.searched-products .grid-item .item .product img {
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.searched-products .grid-item .item .product img:hover {
+  transform: scale(1.05);
+}
+
+p {
+  color: #dbedff;
+}
+
+/* typography classes */
+.font-baloo {
+  font-family: "Baloo Thambi 2", cursive;
+}
+
+.font-rale {
+  font-family: "Raleway", sans-serif;
+}
+
+.font-rubik {
+  font-family: "Rubik", sans-serif;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-18 {
+  font-size: 18px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+/* Color Template */
+.color-header-bg {
+  background: #bad6f2;
+}
+
+.color-navbar-bg {
+  background: #1b6299;
+}
+
+.color-filter-bg {
+  background: #e0fffd;
+}
+
+/* product_page */
+.font-rubik border p-2 {
+  text-align: center;
+}
+
+.product-image img {
+  border-radius: 10px;
+}
+
+/* landing_page */
+.grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.grid .grid-item .item .product img {
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.grid .grid-item .item .product img:hover {
+  transform: scale(1.05);
+}
+
+.jumbotron {
+  background: none;
+  font-size: large;
+}
+
+.card {
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+img {
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.upload {
+  text-align: center;
+  /* width: 300px; */
+}
