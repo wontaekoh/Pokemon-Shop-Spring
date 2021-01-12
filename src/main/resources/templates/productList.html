@@ -65,20 +65,24 @@
         <div class="search form-inline navbar-center m-auto">
           <form action="search.php" method="POST">
             <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" onfocus="this.value=''" placeholder="Search..." name="search">
-            <input class="form-control mr-sm-2" type="submit" name="submit">
+            <input class="form-control mr-sm-2" type="submit" name="submit" value="Search">
           </form>
         </div>
 
         <!-- Sign in & Cart section -->
         <ul class="navbar-nav float-left">
           <li class="nav-item">
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAuthenticated()" th:href="@{#}">
+            <span class="font-size-12">Hey,</span> [[${#request.userPrincipal.principal.getfirstName()}]]</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAnonymous()" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Log In</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" th:href="@{/list}"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAuthenticated()" th:href="@{/list}"><i class="fas fa-th-list"></i> List</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAnonymous()" th:href="@{#}"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
           </li>
         </ul>
       </div>
@@ -89,14 +93,8 @@
       <!-- Product categories -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav m-auto font-rubik">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" th:href="@{/product-list}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Pokemons
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="maintenance.php"><i class="fas fa-seedling"></i> Wild</a>
-              <a class="dropdown-item" href="maintenance.php"><i class="fas fa-warehouse"></i> Farmed</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/product-list}">Pokemons</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="maintenance.php">Best Sellers</a>
@@ -112,19 +110,11 @@
     </nav>
   </header>
   
-  
-  
-  
-  
-<!--   <div th:if="${!results.isEmpty()}"> -->
-<!--     ...not logged in, dont show product edit form -->
-<!--   </div> -->
-<!--   edit form function -->
-  
+
   <!-- Main Section -->
   <main>
 	  <!-- Upload form -->
-	  <section>
+	  <section sec:authorize="isAuthenticated()">
 	    <div class="wrapper">
 	      <div class="container">
 	        <p class="font-baloo p-2 mt-5 border-bottom font-size-20">Add Pokemons</p>
@@ -167,6 +157,9 @@
 	        <p class="font-baloo p-2 mb-5 border-bottom font-size-20"></p><br><br>
 	    </div>
 	  </section>
+	  <section sec:authorize="isAnonymous()">
+	  	<p class="m-5"></p>
+	  </section>
 	
 	  <!-- Display all the products in the inventory -->
 	  <section>
@@ -205,46 +198,5 @@
 	  </section>
   </main>
 
-
   </body>
 </html>
-
-
-
-
-<!-- <section> -->
-<!-- 	    <div class="wrapper"> -->
-<!-- 	      <div class="container"> -->
-<!-- 	          // Display total items in the inventory -->
-<!-- 	          <p class="font-baloo p-2 border-bottom font-size-20">Total -->
-<!-- 	            <span class="text-white-50 font-weight-bold">num_rows</span> -->
-<!-- 	            Pokemons in the inventory</p> -->
-	
-<!-- 	          <div class="searched-products"> -->
-	
-<!-- 				Display each product -->
-<!-- 	            <div class="grid-item border-bottom" th:each="product: ${prodList}"> -->
-<!-- 	              <div class="item p-2"> -->
-<!-- 	                <div class="product font-baloo"> -->
-<!-- 	                  <a th:href="@{/product/{id}(id=${product.id})}"><img th:src="@{/images/{img}(img=${product.imgAddr})}" class="img-fluid"></a> -->
-<!-- 	                  <div class="text-center pt-2"> -->
-<!-- 	                    <h5 class="text-white-50">title</h5> -->
-<!-- 	                    <div class="rating text-warning font-size-12"> -->
-<!-- 	                    stars -->
-<!-- 	                      <span>rating/5.0</span> -->
-<!-- 	                      <div class="price py-1"> -->
-<!-- 	                        <span class="text-light font-size-16">$price</span> -->
-<!-- 	                      </div> -->
-<!-- 	                      <p class="font-size-14">Type: type</p> -->
-<!-- 	                      <button type="submit" class="btn btn-warning font-size-14">Add to Cart</button> -->
-<!-- 	                    </div> -->
-<!-- 	                  </div> -->
-<!-- 	                </div>   -->
-<!-- 	              </div> -->
-<!-- 	            </div> -->
-	            
-<!-- 	          </div> -->
-<!-- 	      </div> -->
-<!-- 	    </div> -->
-<!-- 	  </section> -->
-  
