@@ -26,7 +26,7 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 <!-- [![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif) -->
 
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="demo-images/anonymous.png">
+  <video controls="true" allowfullscreen="true" poster="https://j.gifs.com/0Yw3k5.gif">
     <source src="demo-images/anonymous-view.mp4" type="video/mp4">
   </video>
 </figure>
