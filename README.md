@@ -1,18 +1,18 @@
 # Pokemon-Shop-Spring
 This project is a RESTful Java web service of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop).
 
-**Features added:**
+**Features:**
 - User authentication (login and logout)
 - User Create, Read, Update, and Delete
 - Product Read and Delete
 
-**Future tasks:**
+**Future Tasks:**
 - Adding product create and update functions
 - Adding product search function
 
 <br>
 
-### Technologies used:
+### Technologies Used:
 - Spring Boot framework
 - Spring Security for user authentication
 - Spring MVC
