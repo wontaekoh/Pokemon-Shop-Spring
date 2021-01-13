@@ -20,6 +20,9 @@ Future tasks:
 - MySQL JDBC driver
 
 
+### Demonstration:
+[Anonymous User's View](https://j.gifs.com/0Yw3k5.gif)
+
 
 ### References:
 Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2
