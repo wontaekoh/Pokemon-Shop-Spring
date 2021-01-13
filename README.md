@@ -23,14 +23,9 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 <br>
 
 ### Project Demonstration:
-<!-- [![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif) -->
+[![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://youtu.be/Th77ukyh2x4)
 
-<!-- <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="demo-images/anonymous.png">
-    <source src="demo-images/anonymous-view.mp4" type="video/mp4">
-  </video>
-</figure> -->
-[![video]](https://youtu.be/Th77ukyh2x4 "Click to Watch!")
+[![video](demo-images/anonymous.png)](https://youtu.be/Th77ukyh2x4 "Click to Watch!")
 
 
 
