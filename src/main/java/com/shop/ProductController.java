@@ -77,4 +77,26 @@ public class ProductController {
 		return "productList";
 	}
 	
+	// Product Information
+	@GetMapping("/info/{id}")
+	public String showProdInfo(@PathVariable("id") int id, Model model) {
+		Products product = prodrepo.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+	    model.addAttribute("selectedProd", product);
+	    
+		return "productInfo";
+	}
+	
+//	@PostMapping("/edit-product/{id}")
+//	public String ProdInfo(@PathVariable("id") int id, Products products, 
+//	  BindingResult result, Model model) {		
+//	    if (result.hasErrors()) {
+//	    	products.setId(id);
+//	        return "updateProduct";
+//	    }
+//	        
+//	    prodrepo.save(products);
+//	    return "redirect:/product-list";
+//	}
+	
 }

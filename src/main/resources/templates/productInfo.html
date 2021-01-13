@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKET</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  
+  <!-- font awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+  <!-- Custom CSS file -->
+  <link rel="stylesheet" th:href="@{/styles/cssandjs/style.css}">
+
+</head>
+<body>
+  <!-- header -->
+  <header id="header" style='z-index: 1'>
+    <!-- Primary navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light color-header-bg">
+      <!-- Rocket Logo -->
+      <a class="navbar-brand font-baloo font-size-16" th:href="@{/}">
+        <img th:src="@{/images/clipart1530219.png}" width="35" height="35" alt="">ROCKET
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Service & Support -->
+        <ul class="navbar-nav float-left">
+          <li class="nav-item">
+            <a class="nav-link font-baloo font-weight-bold font-size-18" th:href="@{/}">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Service
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-book"></i> Terms</a>
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-file-word"></i> Warranty</a>
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-syringe"></i> Disease Control</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Support
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-envelope"></i> Email</a>
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-comments"></i> Chat</a>
+              <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-phone"></i> Phone Support</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="maintenance.php"><i class="fa fa-credit-card"></i> Make a Payment</a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Search box -->
+        <div class="search form-inline navbar-center m-auto">
+          <form th:action="@{/search-result}" method="get">
+            <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" placeholder="Search..." name="search">
+            <input class="form-control mr-sm-2" type="submit" value="Search">
+          </form>
+        </div>
+
+        <!-- Sign in & Cart section -->
+        <ul class="navbar-nav float-left">
+          <li class="nav-item">
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAuthenticated()" th:href="@{#}">
+            <span class="font-size-12">Hey,</span> [[${#request.userPrincipal.principal.getfirstName()}]]</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAnonymous()" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAuthenticated()" th:href="@{/list}"><i class="fas fa-th-list"></i> List</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAnonymous()" th:href="@{#}"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Secondary navbar -->
+    <nav class="navbar-expand-lg navbar-dark color-navbar-bg">
+      <!-- Product categories -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav m-auto font-rubik">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/product-list}">Pokemons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/}">Best Sellers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/}">New Releases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/}">Coming Soon</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Section -->
+  <!-- main -->
+	<main id="main-site pb-5">
+	  <section id="product" class="py-3">
+	    <div class="container">
+	      <div class="row" th:object="${selectedProd}" method="POST">
+				<!-- Product Image -->
+	            <div class="product-image col-sm-6 p-5" align="center">
+	            <div class="col-sm-8 p-0">
+	              <img th:src="@{/images/{image}(image=${selectedProd.imgAddr})}" alt="product" class="img-fluid">
+	              <div class="form-row pt-4 font-size-16 font-baloo">
+	                <div class="col">
+	                  <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
+	                </div>
+	                <div class="col">
+	                  <button type="submit" class="btn btn-warning form-control">Add to Cart</button>
+	                </div>
+	              </div>
+	            </div>
+	            </div>
+	
+				<!-- Product Information -->
+	            <div class="product-info col-sm-6 pt-5 pb-5" style="color: whitesmoke">
+	            <h4 class="font-baloo"><b>[[${selectedProd.title}]]</b></h4>
+	            <h6>Type: [[${selectedProd.type}]]</h6>
+	            <div class="d-flex">
+	              <div class="rating text-warning font-size-14">
+	              [[${selectedProd.rating}]] / 5.0
+	              </div>
+	              <a href="maintenance.php" class="px-2 font-rubik font-size-14 text-white-50">10 ratings | 3+ answered
+	                questions</a>
+	            </div>
+	            <hr>
+	
+	            <!--- product price -->
+	            <table class="my-3" style="color: whitesmoke">
+	              <tr class="font-baloo font-size-16">
+	                <td>M.S.R.P:</td>
+	                <td class="pl-3 text-danger"><strike>$[[${selectedProd.MSRP}]]</strike></td>
+	              </tr>
+	              <tr class="font-baloo font-size-16">
+	                <td>Deal Price:</td>
+	                <td class="pl-3 font-size-20"><span>$[[${selectedProd.price}]]</span></td>
+	              </tr>
+	            </table>
+	
+	            <!-- policy -->
+	            <div id="policy" style="color: whitesmoke">
+	              <div class="d-flex">
+	                <div class="return text-center mr-5">
+	                  <div class="font-size-20 my-2 color-second">
+	                    <span class="fas fa-retweet border p-3 rounded-pill"></span>
+	                  </div>
+	                  <a href="maintenance.php" class="font-rubik font-size-12 text-white-50">10 Days <br>
+	                    Replacement</a>
+	                </div>
+	                <div class="return text-center mr-5">
+	                  <div class="font-size-20 my-2 color-second">
+	                    <span class="fas fa-truck border p-3 rounded-pill"></span>
+	                  </div>
+	                  <a href="maintenance.php" class="font-rubik font-size-12 text-white-50">Rocket <br>Deliverd</a>
+	                </div>
+	                <div class="return text-center mr-5">
+	                  <div class="font-size-20 my-2 color-second">
+	                    <span class="fas fa-check-double border p-3 rounded-pill"></span>
+	                  </div>
+	                  <a href="maintenance.php" class="font-rubik font-size-12 text-white-50">1 Year <br>Warranty</a>
+	                </div>
+	              </div>
+	            </div>
+	            <hr>
+	
+	            <!-- order-details -->
+	            <div id="order-details" class="font-rubik d-flex flex-column text-light">
+	              <small>Arrives within 7 days</small>
+	              <small>Sold by <a href="landing_page.php" class="text-white-50"> Rocket </a>( [[${selectedProd.rating}]] out of 5 | 100
+	                ratings )</small>
+	              <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Deliver to -
+	                Algonquin Woodrooffe</small>
+	            </div>
+	
+	            <!-- Gender selection -->
+	            <div class="row" style="color: whitesmoke">
+	              <div class="col-6">
+	                <div class="color my-3"></div>
+	                <div class="d-flex justify-content-between">
+	                  <h6 class="font-baloo">Gender:</h6>
+	                  <div class="d-flex justify-content-between w-75">
+	                    <div class="font-rubik border p-2">
+	                      <button class="btn p-0 font-size-14 text-white-50">Male</button>
+	                    </div>
+	                    <div class="font-rubik border p-2">
+	                      <button class="btn p-0 font-size-14 text-white-50">Female</button>
+	                    </div>
+	                    <div class="font-rubik border p-2">
+	                      <button class="btn p-0 font-size-14 text-white-50">Random</button>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	
+	            <!-- product qty section -->
+	            <div class="my-3" style="color: whitesmoke">
+	              <div class="qty d-flex">
+	                <h6 class="font-baloo">Quantity: </h6>
+	                <div class="px-4 d-flex font-rale">
+	                  <input type="button" id="minus" value="-"
+	                    class="qty_input border px-2 w-5 bg-light text-dark"></button>
+	                  <input type="text" id="qtySel" class="qty_input border px-2 w-50 bg-light text-dark"
+	                    disabled value="1">
+	                  <input type="button" id="plus" value="+"
+	                    class="qty_input border px-2 w-5 bg-light text-dark"></button>
+	                </div>
+	              </div>
+	            </div>
+	
+	            <!-- Real time price -->
+	            <div class="my-3" style="color: whitesmoke">
+	              <div class="qty d-flex">
+	                <h6 class="font-baloo my-2">Total Price:  </h6>
+	                <div class="px-4 d-flex font-rubik text-warning font-size-22">
+	                  $[[${selectedProd.price}]]
+	                </div>
+	              </div>
+	            </div>
+	            </div>
+	            
+				<!-- Product Description -->
+	            <div class="product-desc py-5">
+	            <div class="col-12" style="color: whitesmoke">
+	              <h5 class="font-rubik text-size-20">Product Description: </h5>
+	              <hr>
+	              <p class="font-rale font-size-16 border-top py-3">
+	              [[${selectedProd.pkmDesc}]]
+	            </div>
+	          </div>
+	
+	      </div>
+	    </div>
+	  </section>
+	</main>
+  
+  
+  </body>
+</html>
+  

@@ -174,7 +174,8 @@
 	            <div class="grid-item border-bottom" th:each="prod: ${prodList}">
 	              <div class="item p-2">
 	                <div class="product font-baloo">
-	                  <a><img th:src="@{/images/{image}(image=${prod.imgAddr})}" class="img-fluid"></a>
+	                  <a th:href="@{/info/{id}(id=${prod.id})}">
+	                  <img th:src="@{/images/{image}(image=${prod.imgAddr})}" class="img-fluid"></a>
 	                  <div class="text-center pt-2">
 	                    <h5 class="text-white-50">[[${prod.title}]]</h5>
 	                    <div class="rating text-warning font-size-12">
