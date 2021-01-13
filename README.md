@@ -30,11 +30,11 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
     <source src="demo-images/anonymous-view.mp4" type="video/mp4">
   </video>
 </figure> -->
-[![video](demo-images/anonymous.png)](https://drive.google.com/file/d/10Iyl7gXYfkRylYYRVMHhF-2Akf4OC7bB/view?usp=sharing "Click to Watch!")
 
-<!-- <figure class="video_container">
-  <iframe src="https://drive.google.com/file/d/10Iyl7gXYfkRylYYRVMHhF-2Akf4OC7bB/view?usp=sharing" frameborder="0" allowfullscreen="true"> </iframe>
-</figure> -->
+
+<figure class="video_container">
+  <iframe src="https://youtu.be/Th77ukyh2x4" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
 <br>
 
