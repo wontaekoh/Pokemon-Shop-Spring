@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin()
                 .usernameParameter("email")
-                .defaultSuccessUrl("/list")
+                .defaultSuccessUrl("/")
                 .permitAll()
             .and()
             .logout().logoutSuccessUrl("/").permitAll();
