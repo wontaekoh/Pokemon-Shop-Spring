@@ -11,7 +11,6 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 - Adding product search function
 
 <br>
-----
 
 ### Technologies used:
 - Spring Boot framework
@@ -22,15 +21,13 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 - MySQL JDBC driver
 
 <br>
-----
 
 ### Project Demonstration:
-[![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif)
+![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>(https://j.gifs.com/0Yw3k5.gif "Anonymous User's View")
 
 
 
 <br>
-----
 
 ### References:
 Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2
