@@ -16,7 +16,7 @@ public class ProductController {
 	@Autowired
 	private ProductRepository prodrepo;
 	
-	// Product List
+	// Show Product List
 	@GetMapping("/product-list")
 	public String viewProductList(Model model) {
 		List<Products> products = prodrepo.findAll();
@@ -28,7 +28,7 @@ public class ProductController {
 		return "productList";
 	}
 	
-	// Search Result
+	// Search Result (Not have been implemented yet)
 	@GetMapping("/search-result")
 	public String viewSearchResult(Model model) {
 		List<Products> products = prodrepo.findAll();
@@ -37,7 +37,7 @@ public class ProductController {
 		return "searchedProduct";
 	}
 		
-	// Update Product
+	// Show Update Product Form
 	@GetMapping("/edit-product/{id}")
 	public String showProdUpdateForm(@PathVariable("id") int id, Model model) {
 		Products products = prodrepo.findById(id)
@@ -47,6 +47,7 @@ public class ProductController {
 		return "updateProduct";
 	}
 	
+	// Update Product
 	@PostMapping("/edit-product/{id}")
 	public String updateProd(@PathVariable("id") int id, Products products, 
 	  BindingResult result, Model model) {		
@@ -77,7 +78,7 @@ public class ProductController {
 		return "productList";
 	}
 	
-	// Product Information
+	// Show Product Information Page
 	@GetMapping("/info/{id}")
 	public String showProdInfo(@PathVariable("id") int id, Model model) {
 		Products product = prodrepo.findById(id)
@@ -86,17 +87,5 @@ public class ProductController {
 	    
 		return "productInfo";
 	}
-	
-//	@PostMapping("/edit-product/{id}")
-//	public String ProdInfo(@PathVariable("id") int id, Products products, 
-//	  BindingResult result, Model model) {		
-//	    if (result.hasErrors()) {
-//	    	products.setId(id);
-//	        return "updateProduct";
-//	    }
-//	        
-//	    prodrepo.save(products);
-//	    return "redirect:/product-list";
-//	}
-	
+
 }

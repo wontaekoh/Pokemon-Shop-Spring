@@ -17,11 +17,13 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 	
+	// Home Page
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
 	}
 	
+	// Show Register Form
 	@GetMapping("/register")
 	public String showSignUpForm(Model model) {
 		model.addAttribute("user", new User());
@@ -29,6 +31,7 @@ public class UserController {
 		return "signUp";
 	}
 	
+	// Registration Process
 	@PostMapping("/register-success")
 	public String processRegistration(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -40,7 +43,7 @@ public class UserController {
 		return "registerSuccess";
 	}
 	
-	// User List
+	// Show User List
 	@GetMapping("/list")
 	public String viewUserList(Model model) {
 		List<User> users = repo.findAll();
@@ -49,7 +52,7 @@ public class UserController {
 		return "userList";
 	}
 	
-	// Update User
+	// Show Update User Form
 	@GetMapping("/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") int id, Model model) {
 
@@ -60,6 +63,7 @@ public class UserController {
 		return "updateUser";
 	}
 	
+	// Update User
 	@PostMapping("/edit/{id}")
 	public String updateUser(@PathVariable("id") int id, User user, 
 	  BindingResult result, Model model) {

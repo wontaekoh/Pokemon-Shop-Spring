@@ -12,11 +12,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
-import com.shop.User;
-import com.shop.UserRepository;
 
 @DataJpaTest
-//default: use in-memory db, we want to use real db to create table
+//default: in-memory db, we want to use real db to create table
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTest {
@@ -24,7 +22,6 @@ public class UserRepositoryTest {
 	@Autowired
 	private UserRepository repo;
 	
-	// to perform assertion against db 
 	@Autowired
 	private TestEntityManager entityManager;
 	
@@ -32,7 +29,7 @@ public class UserRepositoryTest {
 	public void testCreateUser() {
 		User user = new User();
 		user.setFirstName("tom");
-		user.setLastName("garry");
+		user.setLastName("test");
 		user.setEmail("tom@email.com");
 		user.setPassword("tom123");
 		
@@ -54,12 +51,11 @@ public class UserRepositoryTest {
 	
 	@Test
 	public void testFindUserByID() {
-		Long id = (long) 17;
+		int id = 17;
 				
 		Optional<User> user = repo.findById(id);
 		System.out.println(user);
 		assertThat(user).isNotNull();
 	}
 
-	
 }
