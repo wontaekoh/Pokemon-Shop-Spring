@@ -117,52 +117,50 @@
 	  <section sec:authorize="isAuthenticated()">
 	    <div class="wrapper">
 	      <div class="container">
-	        <p class="font-baloo p-2 mt-5 border-bottom font-size-20">Add Pokemons</p>
+	        <p class="font-baloo p-2 mt-5 border-bottom font-size-20">Upload new Pokemon</p>
 	
-	        <form action="uploadAction.php" method="POST" enctype="multipart/form-data" style="color: whitesmoke">
+	        <form th:action="@{/product-list}" th:object="${product}" method="POST" enctype="multipart/form-data" style="color: whitesmoke">
 	          <div class="form-row align-items-center m-auto py-1 form-group">
 	            <div class="col-sm-6">
-	              <input type="text" name="pkmName" class="form-control mb-2" id="inlineFormInput" placeholder="Name">
+	              <input type="text" th:field="*{title}" class="form-control mb-2" id="inlineFormInput" placeholder="Name">
 	            </div>
 	            <div class="col-sm-6">
-	              <input type="text" name="pkmType" class="form-control mb-2" id="inlineFormInput" placeholder="Type">
+	              <input type="text" th:field="*{type}" class="form-control mb-2" id="inlineFormInput" placeholder="Type">
 	            </div>
 	          </div>
 	          <div class="form-row align-items-center m-auto py-1 form-group">
 	            <div class="col-sm-4">
-	              <input type="text" name="pkmMSRP" class="form-control mb-2" id="inlineFormInput" placeholder="MSRP">
+	              <input type="text" th:field="*{MSRP}" class="form-control mb-2" id="inlineFormInput" placeholder="MSRP">
 	            </div>
 	            <div class="col-sm-4">
-	              <input type="text" name="pkmPrice" class="form-control mb-2" id="inlineFormInput" placeholder="Sale Price">
+	              <input type="text" th:field="*{price}" class="form-control mb-2" id="inlineFormInput" placeholder="Sale Price">
 	            </div>
 	            <div class="col-sm-4">
-	              <input type="text" name="pkmRating" class="form-control mb-2" id="inlineFormInput" placeholder="Rate">
+	              <input type="text" th:field="*{rating}" class="form-control mb-2" id="inlineFormInput" placeholder="Rate">
 	            </div>
 	          </div>
 	          <div class="form-row align-items-center m-auto pt-1 form-group">
 	            <div class="col-sm-12">
-	              <textarea type="text" name="pkmDesc" class="form-control" rows="5" placeholder="Description"></textarea>
+	              <textarea type="text" th:field="*{pkmDesc}" class="form-control" rows="5" placeholder="Description"></textarea>
 	            </div>
 	          </div>
 	          <br>
 	          <div class="form-row align-items-center m-auto form-group pb-1">
 	            <div class="col-sm-11">
-	              <input type="file" name="imgFile" class="form-control-file pointer">
+	              <input type="file" class="form-control-file pointer">
 	            </div>
 	            <div class="col-sm-1">
-	              <button type="submit" name="upload" class="btn btn-sm btn-outline-warning font-weight-bold">UPLOAD</button>
+	              <button type="submit" class="btn btn-sm btn-outline-warning font-weight-bold">UPLOAD</button>
 	            </div>
 	          </div>
 	        </form>
 	        <p class="font-baloo p-2 mb-5 border-bottom font-size-20"></p><br><br>
 	    </div>
 	  </section>
-	  <section sec:authorize="isAnonymous()">
-	  	<p class="m-5"></p>
-	  </section>
+
 	
 	  <!-- Display all the products in the inventory -->
-	  <section>
+	  <section class="m-5">
 	    <div class="wrapper">
 	      <div class="container">
 			  <!-- Display total items in the inventory -->
@@ -173,19 +171,26 @@
 	          <div class="searched-products">
 	
 				<!-- Display each product -->
-	            <div class="grid-item border-bottom" th:each="product: ${prodList}">
+	            <div class="grid-item border-bottom" th:each="prod: ${prodList}">
 	              <div class="item p-2">
 	                <div class="product font-baloo">
-	                  <a ><img th:src="@{/images/{image}(image=${product.imgAddr})}" class="img-fluid"></a>
+	                  <a ><img th:src="@{/images/{image}(image=${prod.imgAddr})}" class="img-fluid"></a>
 	                  <div class="text-center pt-2">
-	                    <h5 class="text-white-50">[[${product.title}]]</h5>
+	                    <h5 class="text-white-50">[[${prod.title}]]</h5>
 	                    <div class="rating text-warning font-size-12">
-	                      <span>[[${product.rating}]]/5.0</span>
+	                      <span>[[${prod.rating}]]/5.0</span>
 	                      <div class="price py-1">
-	                        <span class="text-light font-size-16">$[[${product.price}]]</span>
+	                        <span class="text-light font-size-16">$[[${prod.price}]]</span>
 	                      </div>
-	                      <p class="font-size-14">Type: [[${product.type}]]</p>
-	                      <button type="submit" class="btn btn-warning font-size-14">Add to Cart</button>
+	                      <p class="font-size-14">Type: [[${prod.type}]]</p>
+	                      <div sec:authorize="isAnonymous()">
+	                      	<button type="submit" class="btn btn-warning font-size-14">Add to Cart</button>
+	                      </div>
+	                  	  <div sec:authorize="isAuthenticated()">
+		                  	  <a th:href="@{/edit-product/{id}(id=${prod.id})}"><i class="far fa-edit text-warning font-size-18 hover"></i></a>
+		                  	  &emsp;
+		                  	  <a th:href="@{/delete-product/{id}(id=${prod.id})}"><i class="far fa-trash-alt text-danger font-size-18 hover"></i></a>
+	                  	  </div>
 	                    </div>
 	                  </div>
 	                </div>  

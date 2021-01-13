@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AppController {
+public class UserController {
 	
 	@Autowired
 	private UserRepository repo;
-	
-	@Autowired
-	private ProductRepository prodrepo;
 	
 	@GetMapping("")
 	public String viewHomePage() {
@@ -52,18 +49,9 @@ public class AppController {
 		return "userList";
 	}
 	
-	// Product List
-	@GetMapping("/product-list")
-	public String viewProductList(Model model) {
-		List<Products> products = prodrepo.findAll();
-		model.addAttribute("prodList", products);
-		
-		return "productList";
-	}
-	
 	// Update User
 	@GetMapping("/edit/{id}")
-	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	public String showUpdateForm(@PathVariable("id") int id, Model model) {
 
 		User user = repo.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
@@ -73,7 +61,7 @@ public class AppController {
 	}
 	
 	@PostMapping("/edit/{id}")
-	public String updateUser(@PathVariable("id") long id, User user, 
+	public String updateUser(@PathVariable("id") int id, User user, 
 	  BindingResult result, Model model) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
@@ -90,16 +78,12 @@ public class AppController {
 	
 	// Delete User	
 	@GetMapping("/delete/{id}")
-	public String deleteUser(@PathVariable("id") long id, Model model) {
+	public String deleteUser(@PathVariable("id") int id, Model model) {
 	    User user = repo.findById(id)
 	    		.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	    repo.delete(user);
 	    
 	    return "redirect:/list";
 	}
-	
-	
-	// read
-	
-	
+
 }

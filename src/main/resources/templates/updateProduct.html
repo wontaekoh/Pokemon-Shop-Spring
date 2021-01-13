@@ -8,10 +8,6 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
   
-  <!-- JavaScript -->
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-  
   <!-- font awesome icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
@@ -113,37 +109,52 @@
   </header>
   
   
-  <!-- Main Section -->
-  <div class="container text-center" style="color: whitesmoke">
-	  <div class="pt-5 pb-2">
-	      <h1>List of Users</h1>
-	  </div>
-	   
-	  <div>
-	      <table class="table" style="color: whitesmoke">
-	          <thead>
-	              <tr>
-	                  <th>ID#</th>
-	                  <th>Full name</th>
-	                  <th>E-mail</th>
-	                  <th>Actions</th>
-	              </tr>
-	          </thead>
-	          <tbody>
-	              <tr th:each="user: ${userList}">
-	                  <td th:text="${user.id}" />
-	                  <td th:text="${user.firstName} + ' ' + ${user.lastName}" />
-	                  <td th:text="${user.email}" />
-	                  <td>
-	                  	<a th:href="@{/edit/{id}(id=${user.id})}"><i class="far fa-edit text-warning font-size-18 hover"></i></a>
-	                  	&emsp;
-	                  	<a th:href="@{/delete/{id}(id=${user.id})}"><i class="far fa-trash-alt text-danger font-size-18 hover"></i></a>
-	                  </td>
-	              </tr>
-	          </tbody>
-	      </table>
-	  </div>
-	</div>
+<!-- Main Section -->
+  Upload form
+	  <section sec:authorize="isAuthenticated()">
+	    <div class="wrapper">
+	      <div class="container">
+	        <p class="font-baloo p-2 mt-5 border-bottom font-size-20">Update <b class="text-warning">[[${selectedProd.title}]]</b></p>
+	
+	        <form th:action="@{/edit-product/{id}(id=${selectedProd.id})}" th:object="${selectedProd}" method="POST" enctype="multipart/form-data" style="color: whitesmoke">
+	          <div class="form-row align-items-center m-auto py-1 form-group">
+	            <div class="col-sm-6">
+	              <input type="text" name="pkmName" th:field="*{title}" class="form-control mb-2" id="inlineFormInput" placeholder="Name">
+	            </div>
+	            <div class="col-sm-6">
+	              <input type="text" name="pkmType" th:field="*{type}" class="form-control mb-2" id="inlineFormInput" placeholder="Type">
+	            </div>
+	          </div>
+	          <div class="form-row align-items-center m-auto py-1 form-group">
+	            <div class="col-sm-4">
+	              <input type="text" name="pkmMSRP" th:field="*{MSRP}" class="form-control mb-2" id="inlineFormInput" placeholder="MSRP">
+	            </div>
+	            <div class="col-sm-4">
+	              <input type="text" name="pkmPrice" th:field="*{price}" class="form-control mb-2" id="inlineFormInput" placeholder="Sale Price">
+	            </div>
+	            <div class="col-sm-4">
+	              <input type="text" name="pkmRating" th:field="*{rating}" class="form-control mb-2" id="inlineFormInput" placeholder="Rate">
+	            </div>
+	          </div>
+	          <div class="form-row align-items-center m-auto pt-1 form-group">
+	            <div class="col-sm-12">
+	              <textarea type="text" name="pkmDesc" th:field="*{pkmDesc}" class="form-control" rows="5" placeholder="Description"></textarea>
+	            </div>
+	          </div>
+	          <br>
+	          <div class="form-row align-items-center m-auto form-group pb-1">
+	            <div class="col-sm-11">
+	              <input type="file" name="imgFile" th:field="*{imgAddr}" class="form-control-file pointer">
+	            </div>
+	            <div class="col-sm-1">
+	              <button type="submit" class="btn btn-sm btn-outline-warning font-weight-bold">UPDATE</button>
+	            </div>
+	          </div>
+	        </form>
+	        <p class="font-baloo p-2 mb-5 border-bottom font-size-20"></p><br><br>
+	    </div>
+	  </section>
+  
   
   </body>
 </html>
