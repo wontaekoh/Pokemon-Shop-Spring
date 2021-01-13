@@ -20,8 +20,8 @@ Future tasks:
 - MySQL JDBC driver
 
 
-### Demonstration:
-[Anonymous User's View](https://j.gifs.com/0Yw3k5.gif)
+### Project Demonstration:
+[![asciicast](https://j.gifs.com/0Yw3k5.gif)](https://j.gifs.com/0Yw3k5.gif)
 
 
 ### References:
