@@ -21,7 +21,7 @@ Future tasks:
 
 
 ### Project Demonstration:
-[Anonymous User's View](demo-images/anonymous.png)(https://j.gifs.com/0Yw3k5.gif)
+[![Anonymous User's View](demo-images/anonymous.png)](https://j.gifs.com/0Yw3k5.gif)
 
 
 
