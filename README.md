@@ -11,7 +11,7 @@ Future tasks:
 - Adding product search function
 
 
-#### Technologies used:
+### Technologies used:
 - Spring Boot framework
 - Spring Security for user authentication
 - Spring MVC
@@ -21,7 +21,7 @@ Future tasks:
 
 
 
-##### References
+### References
 Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2
 
 Pokemon Descriptions: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number
