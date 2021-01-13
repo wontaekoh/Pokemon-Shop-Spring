@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKET</title>
+
+  <link rel="stylesheet" th:href="@{/styles/cssandjs/maintenance.css}>
+  <!-- font awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+</head>
+<body>
+    <div class="main grid">
+      <!-- duck image -->
+      <img id="duck" src="https://i.pinimg.com/564x/67/e0/82/67e0822bebc5552415e94ed1eb1ca977.jpg" alt="">
+      
+      <!-- Maintenance message -->
+      <div>
+        <img class="maintenance" src="https://cdn.iconscout.com/icon/free/png-256/maintenance-services-wrench-setting-support-tools-5-6242.png">
+        <h2>Sorry, we're currently down for maintenance.</h2>
+        <h1>We'll be back shortly.</h1>
+        <a th:href="@{/}">
+          <img class="brand" th:src="@{/images/clipart1530219.png}" >
+        </a> 
+      </div>
+    </div>
+</body>
+</html>
+

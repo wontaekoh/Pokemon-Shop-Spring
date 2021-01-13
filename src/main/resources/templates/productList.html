@@ -38,7 +38,7 @@
             <a class="nav-link font-baloo font-weight-bold font-size-18" th:href="@{/}">About</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Service
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,7 +48,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Support
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,9 +63,9 @@
 
         <!-- Search box -->
         <div class="search form-inline navbar-center m-auto">
-          <form action="search.php" method="POST">
-            <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" onfocus="this.value=''" placeholder="Search..." name="search">
-            <input class="form-control mr-sm-2" type="submit" name="submit" value="Search">
+          <form th:action="@{/search-result}" method="get">
+            <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" placeholder="Search..." name="search">
+            <input class="form-control mr-sm-2" type="submit" value="Search">
           </form>
         </div>
 
@@ -77,8 +77,8 @@
             <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAnonymous()" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAuthenticated()" th:href="@{/list}"><i class="fas fa-th-list"></i> List</a>
@@ -97,13 +97,13 @@
             <a class="nav-link" th:href="@{/product-list}">Pokemons</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">Best Sellers</a>
+            <a class="nav-link" th:href="@{/}">Best Sellers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">New Releases</a>
+            <a class="nav-link" th:href="@{/}">New Releases</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">Coming Soon</a>
+            <a class="nav-link" th:href="@{/}">Coming Soon</a>
           </li>
         </ul>
       </div>
@@ -117,7 +117,7 @@
 	  <section sec:authorize="isAuthenticated()">
 	    <div class="wrapper">
 	      <div class="container">
-	        <p class="font-baloo p-2 mt-5 border-bottom font-size-20">Upload new Pokemon</p>
+	        <p class="font-baloo p-2 mt-5 border-bottom font-size-22">Upload new Pokemon</p>
 	
 	        <form th:action="@{/product-list}" th:object="${product}" method="POST" enctype="multipart/form-data" style="color: whitesmoke">
 	          <div class="form-row align-items-center m-auto py-1 form-group">
@@ -154,7 +154,7 @@
 	            </div>
 	          </div>
 	        </form>
-	        <p class="font-baloo p-2 mb-5 border-bottom font-size-20"></p><br><br>
+	        <p class="font-baloo p-2 border-bottom font-size-20"></p><br><br>
 	    </div>
 	  </section>
 
@@ -164,7 +164,7 @@
 	    <div class="wrapper">
 	      <div class="container">
 			  <!-- Display total items in the inventory -->
-	          <p class="font-baloo p-2 border-bottom font-size-20">Total
+	          <p class="font-baloo p-2 border-bottom font-size-22">Total
 	            <span class="text-white-50 font-weight-bold">[[${prodList.size()}]]</span>
 	            Pokemons in the inventory</p>
 	
@@ -174,13 +174,14 @@
 	            <div class="grid-item border-bottom" th:each="prod: ${prodList}">
 	              <div class="item p-2">
 	                <div class="product font-baloo">
-	                  <a ><img th:src="@{/images/{image}(image=${prod.imgAddr})}" class="img-fluid"></a>
+	                  <a><img th:src="@{/images/{image}(image=${prod.imgAddr})}" class="img-fluid"></a>
 	                  <div class="text-center pt-2">
 	                    <h5 class="text-white-50">[[${prod.title}]]</h5>
 	                    <div class="rating text-warning font-size-12">
 	                      <span>[[${prod.rating}]]/5.0</span>
 	                      <div class="price py-1">
 	                        <span class="text-light font-size-16">$[[${prod.price}]]</span>
+	                        <span class="text-danger"><strike>$[[${prod.MSRP}]]</strike></span>
 	                      </div>
 	                      <p class="font-size-14">Type: [[${prod.type}]]</p>
 	                      <div sec:authorize="isAnonymous()">

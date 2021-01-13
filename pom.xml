@@ -62,7 +62,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-<!-- 		Adding bootstrap dependency from Webjars 36mins-->
+		<!-- Adding bootstrap dependency from Webjars-->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>

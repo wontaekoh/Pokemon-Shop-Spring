@@ -27,6 +27,15 @@ public class ProductController {
 		
 		return "productList";
 	}
+	
+	// Search Result
+	@GetMapping("/search-result")
+	public String viewSearchResult(Model model) {
+		List<Products> products = prodrepo.findAll();
+		model.addAttribute("searchedProducts", products);
+
+		return "searchedProduct";
+	}
 		
 	// Update Product
 	@GetMapping("/edit-product/{id}")

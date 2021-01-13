@@ -36,7 +36,7 @@
             <a class="nav-link font-baloo font-weight-bold font-size-18" th:href="@{/}">About</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Service
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,7 +46,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Support
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,9 +61,9 @@
 
         <!-- Search box -->
         <div class="search form-inline navbar-center m-auto">
-          <form action="search.php" method="POST">
-            <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" onfocus="this.value=''" placeholder="Search..." name="search">
-            <input class="form-control mr-sm-2" type="submit" name="submit" value="Search">
+          <form th:action="@{/search-result}" method="get">
+            <input id="search-box" class="form-control mr-sm-2" style="width:400px" type="textbox" placeholder="Search..." name="search">
+            <input class="form-control mr-sm-2" type="submit" value="Search">
           </form>
         </div>
 
@@ -75,8 +75,8 @@
             <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAnonymous()" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAuthenticated()" th:href="@{/list}"><i class="fas fa-th-list"></i> List</a>
@@ -95,13 +95,13 @@
             <a class="nav-link" th:href="@{/product-list}">Pokemons</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">Best Sellers</a>
+            <a class="nav-link" th:href="@{/}">Best Sellers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">New Releases</a>
+            <a class="nav-link" th:href="@{/}">New Releases</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="maintenance.php">Coming Soon</a>
+            <a class="nav-link" th:href="@{/}">Coming Soon</a>
           </li>
         </ul>
       </div>
@@ -109,9 +109,11 @@
   </header>
   
   <!-- Main Section -->
-  <div class="container text-center" style="color: whitesmoke">
-        <h3>You have signed up successfully!</h3>
-        <h4><a th:href="@{/login}">Click here to Login</a></h4>
+  <div class="container text-center font-baloo py-5" style="color: whitesmoke">
+        <br><br><h2>You have signed up successfully!</h2>
+        <div class="py-3">
+        	<h4>Click <a th:href="@{/login}" class="text-warning">here</a> to Login</h4>
+        </div>
   </div>
   
   </body>

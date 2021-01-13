@@ -97,6 +97,14 @@ p {
   font-size: 20px;
 }
 
+.font-size-22 {
+  font-size: 22px;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
 /* Color Template */
 .color-header-bg {
   background: #bad6f2;
