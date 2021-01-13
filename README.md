@@ -1,5 +1,5 @@
 # Pokemon-Shop-Spring
-This project is a RESTful Java web service of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop){:target="_blank"}.
+This project is a RESTful Java web service of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop).
 
 **Features added:**
 - User authentication (login and logout)
@@ -23,13 +23,13 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 <br>
 ----
 ### Project Demonstration:
-[![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif){:target="_blank"}
+[![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif)
 
 
 
 <br>
 ----
 ### References:
-Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2{:target="_blank"}
+Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2
 
-Pokemon Descriptions: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number{:target="_blank"}
+Pokemon Descriptions: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number
