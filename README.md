@@ -12,6 +12,7 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 
 <br>
 ----
+
 ### Technologies used:
 - Spring Boot framework
 - Spring Security for user authentication
@@ -22,6 +23,7 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 
 <br>
 ----
+
 ### Project Demonstration:
 [![Anonymous User's View]<img src="demo-images/anonymous.png" width="500"/>](https://j.gifs.com/0Yw3k5.gif)
 
@@ -29,6 +31,7 @@ This project is a RESTful Java web service of [Pokemon e-commerce website](https
 
 <br>
 ----
+
 ### References:
 Images: https://shey.tistory.com/category/Wallpapers/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0?page=2
 
