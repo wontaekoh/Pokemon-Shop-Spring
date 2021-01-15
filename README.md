@@ -1,5 +1,7 @@
 # Pokemon-Shop-Spring
-This project is a RESTful Java web service of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop).
+This project is a RESTful Java web service of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop) with JUnit test cases about CRUD operations for user accounts.
+
+<br>
 
 **Features:**
 - User authentication (login and logout)
