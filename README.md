@@ -1,6 +1,6 @@
 # Pokemon-Shop-Spring
 This project is a RESTful Java web service version of [Pokemon e-commerce website](https://github.com/wontaekoh/Pokemon-Shop)
-with JUnit test cases about CRUD operations for user accounts.
+including user account CRUD operation testing using JUnit.
 
 
 <br>
