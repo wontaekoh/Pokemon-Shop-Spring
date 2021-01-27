@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="header">
+	<!-- header -->
+	<header id="header" style='z-index: 1'>
+		<!-- Primary navbar -->
+		<nav class="navbar navbar-expand-lg navbar-light color-header-bg">
+			<!-- Rocket Logo -->
+			<a class="navbar-brand font-baloo font-size-16" th:href="@{/}"> <img th:src="@{/images/clipart1530219.png}" width="35" height="35" alt="">ROCKET
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<!-- Service & Support -->
+				<ul class="navbar-nav float-left">
+					<li class="nav-item"><a class="nav-link font-baloo font-weight-bold font-size-18" th:href="@{/}">About</a></li>
+					<li class="nav-item dropdown"><a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Service </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-book"></i> Terms</a> <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-file-word"></i>
+								Warranty</a> <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fas fa-syringe"></i> Disease Control</a>
+						</div></li>
+					<li class="nav-item dropdown"><a class="nav-link font-baloo font-weight-bold font-size-18 dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Support </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-envelope"></i> Email</a> <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-comments"></i>
+								Chat</a> <a class="dropdown-item font-baloo" href="maintenance.php"><i class="fa fa-phone"></i> Phone Support</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="maintenance.php"><i class="fa fa-credit-card"></i> Make a Payment</a>
+						</div></li>
+				</ul>
+
+				<!-- Search box -->
+				<div class="search form-inline navbar-center m-auto">
+					<form th:action="@{/search-result}" method="get">
+						<input id="search-box" class="form-control mr-sm-2" style="width: 400px" type="textbox" placeholder="Search..." name="search"> <input class="form-control mr-sm-2" type="submit"
+							value="Search">
+					</form>
+				</div>
+
+				<!-- Sign in & Cart section -->
+				<ul class="navbar-nav float-left">
+					<li class="nav-item"><a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAuthenticated()" th:href="@{#}"> <span class="font-size-12">Hey,</span>
+							[[${#request.userPrincipal.principal.getfirstName()}]]
+					</a> <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left" sec:authorize="isAnonymous()" th:href="@{/register}"><i class="fas fa-signature"></i> Sign Up</a></li>
+					<li class="nav-item"><a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i
+							class="fas fa-sign-out-alt"></i> Logout</a> <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-left border-right" sec:authorize="isAnonymous()" th:href="@{/login}"><i
+							class="fas fa-sign-in-alt"></i> Login</a></li>
+					<li class="nav-item"><a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAuthenticated()" th:href="@{/list}"><i class="fas fa-th-list"></i>
+							List</a> <a class="nav-link font-baloo font-weight-bold font-size-16 px-4 border-right" sec:authorize="isAnonymous()" th:href="@{#}"><i class="fas fa-shopping-cart"></i> Cart (0)</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Secondary navbar -->
+		<nav class="navbar-expand-lg navbar-dark color-navbar-bg">
+			<!-- Product categories -->
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav m-auto font-rubik">
+					<li class="nav-item"><a class="nav-link" th:href="@{/product-list}">Pokemons</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Best Sellers</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">New Releases</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Coming Soon</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+</div>
